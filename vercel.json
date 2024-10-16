@@ -1,0 +1,37 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "./index.json",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/index.js"
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/(.*)",
+        "destination": "/index.html"
+      }
+    ],
+    "env": {
+      "NODE_ENV": "production",
+      "API_URL": "https://api.example.com"
+    },
+    "headers": [
+      {
+        "source": "/(.*)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=0, must-revalidate"
+          }
+        ]
+      }
+    ]
+  }
+  
